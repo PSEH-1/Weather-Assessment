@@ -8,7 +8,7 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 @ComponentScan(basePackages={"com.publicissapient.weatherforecast"})
 public class AppConfigBeans {
-
+ 
     @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();

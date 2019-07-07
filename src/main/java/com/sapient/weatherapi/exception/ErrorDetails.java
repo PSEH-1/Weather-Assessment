@@ -6,7 +6,7 @@ public class ErrorDetails {
 	public ErrorDetails(String errorCode, String errorMessage) {
 		super();
 		this.errorCode = errorCode;
-		this.errorMessage = errorMessage;
+		this.errorMessage = errorMessage; 
 	}
 	public String getErrorCode() {
 		return errorCode;
