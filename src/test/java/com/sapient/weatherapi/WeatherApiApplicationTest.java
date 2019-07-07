@@ -1,4 +1,4 @@
-package com.sapient.weatherapi.SapientWeatherAPI;
+package com.sapient.weatherapi;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SapientWeatherApiApplicationTests {
+public class WeatherApiApplicationTest {
 
 	@Test
 	public void contextLoads() {

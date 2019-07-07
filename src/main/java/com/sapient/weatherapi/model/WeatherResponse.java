@@ -1,27 +1,37 @@
 package com.sapient.weatherapi.model;
 
+import java.util.List;
+
 public class WeatherResponse {
-	
-    private MainDetails main;
-    private String alertText;
-    private String name;
     
-	public MainDetails getMain() {
-		return main;
+    private String cod;
+    private String message;
+    private String cnt;
+    private List<WeatherDetails> weatherDetailsList;
+    
+	public String getCod() {
+		return cod;
 	}
-	public void setMain(MainDetails main) {
-		this.main = main;
+	public void setCod(String cod) {
+		this.cod = cod;
 	}
-	public String getAlertText() {
-		return alertText;
+	public String getMessage() {
+		return message;
 	}
-	public void setAlertText(String alertText) {
-		this.alertText = alertText;
+	public void setMessage(String message) {
+		this.message = message;
 	}
-	public String getName() {
-		return name;
+	public String getCnt() {
+		return cnt;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setCnt(String cnt) {
+		this.cnt = cnt;
 	}
+	public List<WeatherDetails> getWeatherDetailsList() {
+		return weatherDetailsList;
+	}
+	public void setWeatherDetailsList(List<WeatherDetails> weatherDetailsList) {
+		this.weatherDetailsList = weatherDetailsList;
+	}
+
 }

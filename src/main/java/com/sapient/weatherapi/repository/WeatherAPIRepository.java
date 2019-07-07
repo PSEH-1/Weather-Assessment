@@ -2,7 +2,10 @@ package com.sapient.weatherapi.repository;
 
 import com.sapient.weatherapi.exception.WeatherForecastServiceException;
 import com.sapient.weatherapi.model.QueryDetails;
+import com.sapient.weatherapi.model.WeatherDetails;
 import com.sapient.weatherapi.model.WeatherResponse;
+
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,14 +34,27 @@ public class WeatherAPIRepository {
         try {
             WeatherResponse weatherResponse =
                     restTemplate.getForObject(makeAndReturnUrl(queryDetails).toUriString(), WeatherResponse.class);
-            weatherResponse.setAlertText("Nothing To Alert!!");
+            printWeatherOutput(weatherResponse);
             return weatherResponse;
         } catch (Exception ee) {
             throw new WeatherForecastServiceException("WEA_FRS_001", "Error In Fetching Data");
         }
     }
 
-    public UriComponentsBuilder makeAndReturnUrl(QueryDetails queryDetails) {
+    private void printWeatherOutput(WeatherResponse weatherResponse) {
+		List<WeatherDetails> wd = weatherResponse.getWeatherDetailsList();
+		for(WeatherDetails wdetails : wd) {
+			System.out.println("Weather Prediction for day : " + wdetails.getDate());
+			if(wdetails.getWeather().getMain().equals("Rain")) {
+				System.out.println("Carry Umbrella");
+			} else if(wdetails.getMainDetails().getTemp() > 40.0) {
+				System.out.println("Use sunscreenlotion");
+			}
+		}
+		
+	}
+
+	public UriComponentsBuilder makeAndReturnUrl(QueryDetails queryDetails) {
         UriComponentsBuilder queryBuilder = UriComponentsBuilder.fromHttpUrl(fetchWeatherBaseUrl)
                 .queryParam("appid", apiKey)
                 .queryParam("q", queryDetails.getCityName() == null ? defaultCity : queryDetails.getCityName());
